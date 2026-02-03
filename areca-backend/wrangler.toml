@@ -1,0 +1,27 @@
+# Cloudflare Worker configuration for the Areca backend
+name = "areca-backend"
+main = "src/index.js"
+compatibility_date = "2025-11-20"
+workers_dev = true
+
+# Example route mapping (uncomment and replace with your zone details)
+# routes = [
+#   { pattern = "example.com/api/*", zone_id = "YOUR_ZONE_ID" }
+# ]
+
+[vars]
+MODEL_VERSION = "areca-vit-v0.1.0"
+WORKER_ALLOWLIST_ORIGINS = "http://localhost:3000,http://127.0.0.1:3000"
+FRONTEND_ORIGIN = "http://127.0.0.1:3000"   # keep a single definition
+MARKET_DATA_SOURCE = "https://example.com/market-data"
+INFERENCE_URL = ""
+INFERENCE_KEY = ""
+SENTRY_DSN = ""
+
+[[r2_buckets]]
+binding = "R2_BUCKET"
+bucket_name = "areca-uploads"
+preview_bucket_name = "areca-uploads-dev"
+
+[observability]
+enabled = true

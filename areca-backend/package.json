@@ -1,0 +1,23 @@
+{
+  "name": "areca-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cloudflare Worker API backend for the Areca frontend",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local --persist-to=./.wrangler/state",
+    "deploy": "wrangler publish",
+    "test:curl": "node scripts/run-acceptance-tests.mjs",
+    "test:testspirit": "npx testsprite --config tests/testspirit.plan.json || npx testspirit --plan tests/testspirit.plan.json"
+  },
+  "dependencies": {
+    "itty-router": "^4.0.29"
+  },
+  "devDependencies": {
+    "wrangler": "^3.81.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+

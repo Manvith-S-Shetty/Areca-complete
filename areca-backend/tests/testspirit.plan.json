@@ -1,0 +1,134 @@
+{
+  "$schema": "https://testspirit.dev/schema/v1.json",
+  "name": "Areca Cloudflare Worker API",
+  "description": "Covers contract tests for all /api routes exposed by the Areca backend.",
+  "config": {
+    "baseUrlEnv": "API_BASE_URL",
+    "defaultBaseUrl": "http://127.0.0.1:8787"
+  },
+  "scenarios": [
+    {
+      "id": "health",
+      "name": "Health check",
+      "request": {
+        "method": "GET",
+        "path": "/api/health"
+      },
+      "expect": {
+        "status": 200,
+        "json": {
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "id": "login",
+      "name": "Login sets cookie",
+      "request": {
+        "method": "POST",
+        "path": "/api/login",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "token": "demo-token"
+        }
+      },
+      "expect": {
+        "status": 200,
+        "headers": {
+          "Set-Cookie": "*sb_token=*"
+        },
+        "json": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "id": "detect",
+      "name": "Disease detection stub",
+      "request": {
+        "method": "POST",
+        "path": "/api/detect",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA",
+          "metadata": {
+            "lat": 13.32,
+            "lon": 74.74
+          }
+        }
+      },
+      "expect": {
+        "status": 200,
+        "json": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "id": "upload",
+      "name": "Upload capture stub",
+      "request": {
+        "method": "POST",
+        "path": "/api/upload",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "filename": "leaf.png",
+          "data": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA"
+        }
+      },
+      "expect": {
+        "status": 200,
+        "json": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "id": "prices",
+      "name": "Daily price data",
+      "request": {
+        "method": "GET",
+        "path": "/api/prices",
+        "query": {
+          "location": "IN-KA",
+          "since": "2024-01-01T00:00:00.000Z"
+        }
+      },
+      "expect": {
+        "status": 200,
+        "json": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "id": "alerts",
+      "name": "Nearby alerts",
+      "request": {
+        "method": "POST",
+        "path": "/api/alerts/nearby",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "lat": 13.32,
+          "lon": 74.74,
+          "radius": 15
+        }
+      },
+      "expect": {
+        "status": 200,
+        "json": {
+          "ok": true
+        }
+      }
+    }
+  ]
+}
+
