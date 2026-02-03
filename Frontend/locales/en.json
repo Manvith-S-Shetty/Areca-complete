@@ -1,0 +1,33 @@
+{
+  "app_name": "Areca",
+  "hero": {
+    "title": "Smart Farming",
+    "highlight": "Starts Here",
+    "subtitle": "Areca is your intelligent agricultural assistant. Capture crop images, get instant insights, and grow smarter."
+  },
+  "cta": {
+    "capture": "Start Capturing",
+    "dashboard": "View Dashboard"
+  },
+  "features": {
+    "capture": {
+      "title": "Instant Capture",
+      "desc": "Take photos and analyze instantly"
+    },
+    "insights": {
+      "title": "Smart Insights",
+      "desc": "Get AI-powered crop recommendations"
+    },
+    "track": {
+      "title": "Track Progress",
+      "desc": "Monitor your captures and results"
+    }
+  },
+  "quickLinks": {
+    "title": "Quick Access",
+    "diseases": "Disease Library",
+    "prices": "Market Prices",
+    "loans": "Farm Loans",
+    "alerts": "Neighborhood Alerts"
+  }
+}
